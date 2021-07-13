@@ -6,24 +6,26 @@ class Practice
   @@user_with_name_alex = []
   def fetching_data
     users = YAML.load_file('users_data.yaml')
-    users.each { |user|
+    users.map do |user|
       display_all_user(user)
+      display_user_full_name(user)
       display_buyer_or_seller_name(user)
       display_age_of_user(user)
-    }
+    end
   end
 
   def display_all_user(user_name)
     puts "User name #{user_name[:first_name]}"
-    @@user_with_name_alex << (user_name[:first_name] +" "+ user_name[:last_name]).titleize  if user_name[:first_name] == "alex"
+  end
+
+  def display_user_full_name(name_of_user)
+    puts "This user full name is #{(name_of_user[:first_name] +' '+ name_of_user[:last_name]).titleize}"
   end
 
   def display_buyer_or_seller_name(check_buyer)
-    if check_buyer[:role] == "buyer"
-      puts "This user full name is #{(check_buyer[:first_name] +" "+ check_buyer[:last_name]).titleize}"
+    if check_buyer[:role] == 'buyer'
       puts "This user role #{check_buyer[:role]}"
-    else 
-      puts "This user full name is #{(check_buyer[:first_name] +" "+ check_buyer[:last_name]).titleize}"
+    else
       puts "This user role #{check_buyer[:role]}"
     end
   end
@@ -33,24 +35,19 @@ class Practice
   end
 
   def all_list
-    puts "User with firstname Alex"
-    @@user_with_name_alex.each { |user|
-      puts "#{user}"
-    }
+    puts 'User with firstname Alex'
+    @@user_with_name_alex.each { |user| puts "#{user}" }
   end
 end
 class Product
   def fetch_product
     products = YAML.load_file('products_data.yaml')
-    puts "List Of Products Available"
-    products.each { |product| 
-      puts "#{product[:name]}" 
-    }
+    puts 'List Of Products Available'
+    products.each { |product| puts "#{product[:name]}" }
   end
 end
-n = Practice.new 
+n = Practice.new
 n.fetching_data
 n.all_list
 d = Product.new
 d.fetch_product
-
