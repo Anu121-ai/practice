@@ -19,11 +19,11 @@ class Practice
   end
 
   def display_user_full_name(name_of_user)
-    puts "This user full name is #{(name_of_user[:first_name] +' '+ name_of_user[:last_name]).titleize}"
+    puts "This User full name #{(name_of_user[:first_name] +' '+ name_of_user[:last_name]).titleize}"
   end
 
   def display_buyer_or_seller_name(check_buyer)
-    puts "This user role #{check_buyer[:role]}"
+    puts "This User role #{check_buyer[:role]}"
   end
 
   def display_age_of_user(data)
