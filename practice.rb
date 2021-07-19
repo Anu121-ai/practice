@@ -16,6 +16,7 @@ class Practice
 
   def display_all_user(user_name)
     puts "User name #{user_name[:first_name]}"
+    @@user_with_name_alex << (user_name[:first_name] +" "+ user_name[:last_name]).titleize  if user_name[:first_name] == "alex"
   end
 
   def display_user_full_name(name_of_user)
